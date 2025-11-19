@@ -1,0 +1,89 @@
+# Docker ignore file - excludes unnecessary files from Docker image
+
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation (keep essential ones, exclude large files)
+*.md
+!README.md
+!COMMANDS.md
+!QUICKSTART.md
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+.project
+.settings/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.log
+
+# Config files (will be created fresh)
+config/.myshell_history
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Archives
+*.tar.gz
+*.zip
+*.tar.bz2
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node modules
+node_modules/
+npm-debug.log
+
+# Test files
+test-results/
+coverage/
+
+# Local development
+.env
+.env.local
+local-config.sh
+
+# Build artifacts
+*.o
+*.so
+*.a
+*.deb
+*.rpm
+
+# Documentation build files
+docs/_build/
+docs/.doctrees/
+
+# Large documentation files
+PROJECT_MANUAL.tex
+PROJECT_SUMMARY.md
+TESTING.md
+CONTRIBUTING.md
+FUTURE_ENHANCEMENTS.md
+
+# Windows-specific
+*.exe
+*.dll
+*.bat
+launch-windows.bat
+WINDOWS_SETUP.md

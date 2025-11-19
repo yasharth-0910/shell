@@ -4,11 +4,14 @@
 
 ![Bash](https://img.shields.io/badge/Bash-4.0+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Unix-lightgrey.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Unix%20%7C%20WSL2%20%7C%20macOS-lightgrey.svg)
+![Windows](https://img.shields.io/badge/Windows-WSL2%20%7C%20Docker-blue.svg)
 
-A professional, feature-rich custom shell environment with 20+ utility scripts for system administration, networking, and interactive computing.
+A professional, feature-rich custom shell environment with 18 utility scripts for system administration, networking, and interactive computing.
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Scripts](#-available-scripts) • [Documentation](#-documentation)
+**✅ Now Windows Compatible via WSL2 & Docker!**
+
+[Features](#-features) • [Installation](#-installation) • [Windows Setup](#-windows-users) • [Usage](#-usage) • [Scripts](#-available-scripts) • [Documentation](#-documentation)
 
 </div>
 
@@ -37,11 +40,13 @@ This project implements a custom shell environment built entirely in Bash, demon
 
 **Key Highlights:**
 - 🚀 Lightweight and fast
-- 🛠️ 20+ utility scripts organized by category
+- 🛠️ 18 carefully selected utility scripts organized by category
 - 🎨 Colorful, interactive interface
 - 📝 Command history support
 - 🔧 Easy to extend and customize
 - 📚 Educational resource for learning shell scripting
+- 💻 **Cross-platform: Linux, macOS, WSL2, Docker**
+- 🪟 **Windows compatible via WSL2 or Docker**
 
 ---
 
@@ -76,16 +81,12 @@ This project implements a custom shell environment built entirely in Bash, demon
 - **Division.sh**: Divide two numbers (with zero check)
 - **Simplecalc.sh**: Interactive calculator with all operations
 
-#### 🎮 Interactive Utilities (4 scripts)
+#### 🎮 Interactive Utilities (1 script)
 - **Hello.sh**: Basic I/O demonstration
-- **Process.sh**: Command chaining examples
-- **Interactive.sh**: Menu-driven interface
-- **pomodoro.sh**: Productivity timer (25-min intervals)
 
-#### 🎨 Miscellaneous (3 scripts)
-- **weather.sh**: Weather information via API
+#### 🌤️ Miscellaneous (2 scripts)
+- **weather.sh**: Weather information display
 - **RedditTop.sh**: Top Reddit posts viewer
-- **Colorful.sh**: Terminal color demonstration
 
 ---
 
@@ -93,21 +94,53 @@ This project implements a custom shell environment built entirely in Bash, demon
 
 - **Language**: Bash 4.0+
 - **Tools**: netcat, curl, bc, coreutils
-- **Platform**: Linux/Unix systems
+- **Platform**: Linux/Unix systems, WSL2, Docker, macOS
 - **Dependencies**: Optional (jq, lm-sensors, bc)
+
+---
+
+## 💻 Platform Support
+
+| Platform | Status | Method |
+|----------|--------|--------|
+| **Linux** | ✅ Full Support | Native |
+| **WSL2 (Windows)** | ✅ Full Support | Recommended for Windows |
+| **Docker** | ✅ Full Support | Cross-platform |
+| **macOS** | ⚠️ Mostly Works | Native (some limitations) |
+| **Git Bash (Windows)** | ⚠️ Partial | Math scripts only |
+
+### 🪟 Windows Users
+
+**See [WINDOWS_SETUP.md](WINDOWS_SETUP.md) for detailed instructions!**
+
+Quick start for Windows:
+```powershell
+# Option 1: WSL2 (Recommended - Full Support)
+wsl --install
+# Then open Ubuntu and follow Linux installation
+
+# Option 2: Docker (Full Support)
+docker build -t myshell .
+docker run -it myshell
+
+# Option 3: Git Bash (Partial Support - Math scripts only)
+bash myshell.sh
+```
 
 ---
 
 ## 📥 Installation
 
-### Prerequisites
+### Linux/macOS/WSL2
+
+#### Prerequisites
 
 Ensure you have the following installed:
 ```bash
 # Check Bash version (requires 4.0+)
 bash --version
 
-# Install required tools (Ubuntu/Debian)
+# Install required tools (Ubuntu/Debian/WSL2)
 sudo apt-get update
 sudo apt-get install curl netcat bc coreutils
 
@@ -122,9 +155,12 @@ sudo dnf install curl nc bc coreutils
 
 # Arch Linux
 sudo pacman -S curl gnu-netcat bc coreutils
+
+# macOS
+brew install bash curl netcat bc coreutils
 ```
 
-### Automated Installation
+#### Automated Installation
 
 ```bash
 # Clone or download the project
@@ -136,7 +172,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Manual Installation
+#### Manual Installation
 
 ```bash
 # Download and extract the project

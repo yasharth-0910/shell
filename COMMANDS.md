@@ -451,83 +451,6 @@ MyShell:~$ Hello
 
 ---
 
-### `Process.sh`
-**Description:** Demonstrates command chaining techniques (pipes, redirects, etc.).  
-**Usage:** `Process.sh`  
-**Parameters:** None
-
-**Example:**
-```bash
-MyShell:~$ Process
-```
-
-**What it demonstrates:**
-- Sequential execution (;)
-- AND operator (&&)
-- OR operator (||)
-- Pipes (|)
-- Command substitution $()
-- Redirects (>, >>)
-
-**Use case:** Learning how to chain commands together.
-
----
-
-### `Interactive.sh`
-**Description:** Multi-level menu system with submenus.  
-**Usage:** `Interactive.sh`  
-**Parameters:** None (interactive)
-
-**Example:**
-```bash
-MyShell:~$ Interactive
-```
-
-**What it provides:**
-- Main menu with 6 options
-- System information submenu
-- File operations submenu
-- Network tools submenu
-- Calculator submenu
-- About section
-
-**Use case:** Demonstrates advanced menu navigation and user interaction.
-
----
-
-### `pomodoro.sh [work_minutes] [break_minutes]`
-**Description:** Productivity timer implementing the Pomodoro Technique.  
-**Usage:** `pomodoro.sh [work_minutes] [break_minutes]`  
-**Parameters:**
-- `work_minutes` (optional): Work session length. Default: 25
-- `break_minutes` (optional): Break length. Default: 5
-
-**Examples:**
-```bash
-# Standard Pomodoro (25 min work / 5 min break)
-MyShell:~$ pomodoro
-
-# Extended session (45 min work / 10 min break)
-MyShell:~$ pomodoro 45 10
-
-# Quick sprint (15 min work / 3 min break)
-MyShell:~$ pomodoro 15 3
-```
-
-**What it does:**
-- Counts down work time
-- Shows progress bar
-- Alerts when time is up
-- Starts break timer
-- Tracks completed sessions
-
-**Pomodoro Technique:**
-- Work focused for 25 minutes
-- Take 5-minute break
-- After 4 cycles, take longer break
-
----
-
 ## Miscellaneous Scripts
 
 ### `weather.sh [city]`
@@ -598,28 +521,6 @@ sudo apt-get install jq
 
 ---
 
-### `Colorful.sh`
-**Description:** Demonstrate terminal color capabilities and codes.  
-**Usage:** `Colorful.sh`  
-**Parameters:** None
-
-**Example:**
-```bash
-MyShell:~$ Colorful
-```
-
-**What it shows:**
-- 16 basic ANSI colors
-- Bold text colors
-- Background colors
-- 256-color palette
-- RGB true color examples
-- Text formatting (bold, italic, underline)
-
-**Use case:** Learning terminal color codes for creating colorful scripts.
-
----
-
 ## Tips and Tricks
 
 ### Running Scripts
@@ -637,8 +538,10 @@ Scripts are organized into 5 categories:
 1. **System Administration** (9 scripts)
 2. **Network Services** (1 script)
 3. **Mathematical Operations** (5 scripts)
-4. **Interactive Utilities** (4 scripts)
-5. **Miscellaneous** (3 scripts)
+4. **Interactive Utilities** (1 script)
+5. **Miscellaneous** (2 scripts)
+
+**Total: 18 utility scripts**
 
 ### Getting Help
 
@@ -696,12 +599,87 @@ MyShell:~$ CPU 85 ; Disk-Space 80 ; Server-Health
 | Division.sh | Math | Divide numbers |
 | Simplecalc.sh | Math | Interactive calculator |
 | Hello.sh | Interactive | I/O demo |
-| Process.sh | Interactive | Command chaining demo |
-| Interactive.sh | Interactive | Menu system |
-| pomodoro.sh | Interactive | Productivity timer |
 | weather.sh | Misc | Weather info |
 | RedditTop.sh | Misc | Reddit posts |
-| Colorful.sh | Misc | Color demonstration |
+
+---
+
+## Platform Compatibility
+
+### ✅ **Linux/Unix - Full Support**
+All scripts work natively on Linux distributions (Ubuntu, Debian, Fedora, Arch, etc.)
+
+### ✅ **Windows - WSL2 (Recommended)**
+**Best way to run on Windows:**
+
+1. **Install WSL2:**
+   ```bash
+   # In PowerShell (Administrator)
+   wsl --install
+   ```
+
+2. **Open Ubuntu from Start Menu**
+
+3. **Navigate and run:**
+   ```bash
+   cd /mnt/c/Users/YourName/Downloads/shell
+   ./install.sh
+   ./myshell.sh
+   ```
+
+**All features work perfectly in WSL2!**
+
+### ⚠️ **Windows - Git Bash (Partial Support)**
+**What works:**
+- ✅ Math scripts (Addition, Subtraction, Multiplication, Division, Simplecalc)
+- ✅ Hello.sh
+- ✅ DirectorySize.sh (basic functionality)
+- ✅ weather.sh (if curl available)
+- ✅ RedditTop.sh (if curl available)
+
+**What doesn't work:**
+- ❌ System monitoring scripts (Server-Health, CPU, Disk-Space, Get-Temperature)
+- ❌ Network info collection (CollectNetworkInfo)
+- ❌ tiny-http server
+- ❌ Some hardware detection features
+
+**To use with Git Bash:**
+1. Download Git for Windows: https://git-scm.com/download/win
+2. Right-click project folder → "Git Bash Here"
+3. Run: `bash myshell.sh`
+
+### 🐳 **Windows - Docker (Full Support)**
+**For complete compatibility on Windows without WSL2:**
+
+1. **Install Docker Desktop for Windows**
+
+2. **Create Dockerfile in project root:**
+   ```dockerfile
+   FROM ubuntu:22.04
+   
+   RUN apt-get update && apt-get install -y \
+       bash curl netcat bc coreutils lm-sensors \
+       && rm -rf /var/lib/apt/lists/*
+   
+   WORKDIR /app
+   COPY . /app
+   
+   RUN chmod +x myshell.sh scripts/*.sh
+   
+   CMD ["./myshell.sh"]
+   ```
+
+3. **Build and run:**
+   ```bash
+   docker build -t myshell .
+   docker run -it myshell
+   ```
+
+### 🍎 **macOS - Mostly Works**
+Most scripts work on macOS with some limitations:
+- May need to install GNU coreutils: `brew install coreutils`
+- Some system monitoring features may differ
+- Network commands may vary slightly
 
 ---
 
@@ -730,5 +708,6 @@ For issues, questions, or contributions:
 
 ---
 
-**Last Updated:** November 7, 2025  
-**Version:** 1.0.0
+**Last Updated:** November 19, 2025  
+**Version:** 1.0.0  
+**Total Scripts:** 18 (22 originally, simplified for ease of use)
